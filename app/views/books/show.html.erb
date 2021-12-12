@@ -1,0 +1,37 @@
+<p id="notice"></p>
+<div class="container px-5 px-sm-0">
+ <div class="row">
+   <div class="col-md-3">
+     <%= render 'users/user', user: @user %>
+       <%= render 'books/book', book: @newbook %>
+   </div>
+  <div class="col-md-8 offset-md-1">
+ <h2>Book detail</h2>
+<table class="table">
+ <tbody>
+  <tr>
+   <td>
+    <%= link_to attachment_image_tag(@user, :profile_image, :fill, 30, 30, format: 'jpeg', fallback: "no-image-icon-d3f9e11cb2bb284b42e0810f94b03c50126f51f482ea43054b87c2b7ebaa01d5.jpg"), user_path(@user.id) %>
+    <%= link_to @user.name, user_path(@user.id) %>
+   </td>
+   <td><%= link_to @book.title, book_path(@book.id) %></td>
+   <td><%= @book.body %></td>
+   <% if @book.user_id==current_user.id %>
+   <td><%= link_to "Edit", edit_book_path(@book.id), class:"btn btn-sm btn-success" %></td>
+   <td><%= link_to "Destroy", book_path(@book.id), method: :delete, data: {confirm: "本当に消しますか？"}, class:"btn btn-sm btn-danger" %></td>
+   <% end %>
+  </tr>
+ </tbody>
+</table>
+</div>
+ </div>
+</div>
+<footer>
+  <div class="container mt-5">
+    <div class="row">
+      <div class="mx-auto">
+        <p>CopyRight Infratop.inc</p>
+      </div>
+    </div>
+  </div>
+</footer>
